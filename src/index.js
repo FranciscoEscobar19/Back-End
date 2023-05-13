@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import "./database"
+import routerPlanes from "./routes/planes.routes";
 
 const app = express()
 
@@ -15,3 +16,4 @@ app.use(morgan("dev"))
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use("/ConsultaPlanes",routerPlanes)
