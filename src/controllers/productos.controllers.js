@@ -50,6 +50,15 @@ ProductosCtrl.editarProducto= async(req,res)=>{
         res.status(404)
     }
 }
+ProductosCtrl.verProducto= async(req,res)=>{
+    try {
+        const verProducto= await ProductoModel.findById(req.params._id)
+        res.status(200).json(verProducto)
+    } catch (error) {
+        console.log(error)
+        res.status(404)
+    }
+}
 
 
 export default ProductosCtrl

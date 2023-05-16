@@ -13,6 +13,7 @@ routerProductos
 .route("/:_id")
 .delete(ProductosCtrl.eliminarProducto)
 .put(ProductosCtrl.editarProducto)
+.get(ProductosCtrl.verProducto)
 
 
 
