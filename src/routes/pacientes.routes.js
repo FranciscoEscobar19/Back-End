@@ -12,5 +12,6 @@ routerPacientes
 .route("/:_id")
 .delete(PacientesCtrl.eliminarPacientes)
 .put(PacientesCtrl.editarPacientes)
+.get(PacientesCtrl.verPacientes)
 
 export default routerPacientes

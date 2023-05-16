@@ -34,6 +34,18 @@ PacientesCtrl.listarPacientes= async (req,res)=>{
     }
 }
 
+PacientesCtrl.verPacientes= async (req,res)=>{
+    try {
+        const verPaciente= await PacientesModels.findById(req.params._id)
+        res.status(200).json(verPaciente)
+    } catch (error) {
+        console.log(error)
+        res.status(404)
+    }
+}
+
+
+
 PacientesCtrl.eliminarPacientes = async(req,res)=>{
     try {
         await PacientesModels.findByIdAndDelete(req.params._id)
