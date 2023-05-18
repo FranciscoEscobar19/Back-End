@@ -4,6 +4,7 @@ import cors from "cors";
 import routerPacientes from "./routes/pacientes.routes";
 import routerProductos from "./routes/productos.routes";
 import "./database"
+import routerPlanes from "./routes/planes.routes";
 
 const app = express()
 
@@ -20,3 +21,4 @@ app.use(express.urlencoded({extended:true}))
 
 app.use("/admPacientes", routerPacientes)
 app.use("/admProductos", routerProductos)
+app.use("/ConsultaPlanes",routerPlanes)
