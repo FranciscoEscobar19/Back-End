@@ -17,7 +17,7 @@ telefonoCliente: {
     require: true
 },
 
-Descripcion:{
+elefonoCliente:{
     type:String,
     require:true
 }

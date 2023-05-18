@@ -8,7 +8,7 @@ import routerPlanes from "./routes/planes.routes";
 
 const app = express()
 
-app.set("port", process.env.PORT || 4003);
+app.set("port", process.env.PORT || 4009);
 
 app.listen(app.get("port"),()=>{
     console.log("Hola me ejecuto en el puerto "+ app.get("port"))
@@ -21,4 +21,4 @@ app.use(express.urlencoded({extended:true}))
 
 app.use("/admPacientes", routerPacientes)
 app.use("/admProductos", routerProductos)
-app.use("/ConsultaPlanes",routerPlanes)
+app.use("/admPlanes", routerPlanes)
