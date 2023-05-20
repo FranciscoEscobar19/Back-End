@@ -14,7 +14,7 @@ const TurnoSchema = new Schema({
         require:true,
     },
     fechaYHora:{
-        type:String,
+        type:Date,
         require:true,
     }   
 })
