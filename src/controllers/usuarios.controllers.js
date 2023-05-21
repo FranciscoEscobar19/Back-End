@@ -1,17 +1,17 @@
-import ConsultaModels from "../models/planes";
+import UsuarioModels from "../models/usuarios";
 
-const ConsultaCtrl = {};
+const UsuarioCtrl = {};
 
-ConsultaCtrl.registrarConsulta = async (req, res) => {
+UsuarioCtrl.registrarUsuario = async (req, res) => {
   try {
-    const NuevaConsulta = new ConsultaModels({
+    const NuevaUsuario = newUsuarioModels({
       nombreCliente: req.body.nombreCliente,
       MailCliente: req.body.MailCliente,
       telefonoCliente: req.body.telefonoCliente,
       Descripcion: req.body.Descripcion,
     });
 
-    await NuevaConsulta.save();
+    await NuevaUsuario.save();
     res.status(201).json("Producto Registrado");
   } catch (error) {
     console.log(error);
@@ -19,19 +19,19 @@ ConsultaCtrl.registrarConsulta = async (req, res) => {
   }
 };
 
-ConsultaCtrl.leerConsulta = async (req, res) => {
+UsuarioCtrl.leerUsuario = async (req, res) => {
   try {
-    const verListaConsulta = await ConsultaModels.find();
-    res.status(200).json(verListaConsulta);
+    const verListaUsuario = await UsuarioModels.find();
+    res.status(200).json(verListaUsuario);
   } catch (error) {
     console.log(error);
     res.status(404);
   }
 };
 
-ConsultaCtrl.eliminarConsulta = async (req, res) => {
+UsuarioCtrl.eliminarUsuario = async (req, res) => {
   try {
-     await ConsultaModels.findByIdAndDelete(req.params._id);
+     await UsuarioModels.findByIdAndDelete(req.params._id);
     res.status(200).json("Consulta Eliminada");
   } catch (error) {
     console.log(error);
@@ -39,4 +39,4 @@ ConsultaCtrl.eliminarConsulta = async (req, res) => {
   }
 };
 
-export default ConsultaCtrl;
+export default UsuarioCtrl;

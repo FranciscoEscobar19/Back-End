@@ -1,12 +1,15 @@
 import { Router } from "express";
-import PlanesCtrl from "../controllers/planes.controlers";
+import ConsultaCtrl from "../controllers/planes.controlers";
 
 
-const routerPlanes = Router ()
+const routerConsulta = Router ()
 
-routerPlanes
+routerConsulta
 .route("/")
-.post(PlanesCtrl.registrarConsulta)
-.get(PlanesCtrl.leerConsulta)
+.post(ConsultaCtrl.registrarConsulta)
+.get(ConsultaCtrl.leerConsulta)
 
-export default routerPlanes
+routerConsulta
+.route("/:_id")
+.delete(ConsultaCtrl.eliminarConsulta)
+export default routerConsulta

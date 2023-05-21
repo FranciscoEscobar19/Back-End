@@ -1,6 +1,6 @@
 import mongoose,{Schema} from "mongoose"
 
-const planesSchema = new Schema ({
+const consultaSchema = new Schema ({
 
 nombreCliente:{
     type: String,
@@ -17,7 +17,7 @@ telefonoCliente: {
     require: true
 },
 
-elefonoCliente:{
+Descripcion:{
     type:String,
     require:true
 }
@@ -28,7 +28,7 @@ elefonoCliente:{
 
 })
 
-const PlanesModels = mongoose.model("ConsultaPlanes",planesSchema)
+const ConsultaModels = mongoose.model("ConsultaPlanes",consultaSchema)
 
 
-export default PlanesModels
+export default ConsultaModels
