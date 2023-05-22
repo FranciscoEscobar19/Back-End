@@ -1,6 +1,6 @@
 import { Router } from "express";
 import PlanCtrl from "../controllers/detallePlan.controllers";
-
+import autenticacionToken from "../middlewares/verificacionToken";
 
 const routerPlan = Router()
 

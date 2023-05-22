@@ -1,6 +1,6 @@
 import { Router } from "express";
 import ComentarioCtrl from "../controllers/comentarios.controllers";
-
+import autenticacionToken from "../middlewares/verificacionToken";
 
 const routerComentario = Router ()
 

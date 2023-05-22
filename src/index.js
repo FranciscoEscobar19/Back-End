@@ -7,6 +7,7 @@ import "./database"
 import routerConsulta from "./routes/planes.routes";
 import routerComentario from "./routes/comentarios.routes";
 import routerPlan from "./routes/detallePlan.routes";
+import routerUsuarios from "./routes/usuarios.routes";
 
 const app = express()
 
@@ -26,3 +27,4 @@ app.use("/admProductos", routerProductos)
 app.use("/admConsulta", routerConsulta)
 app.use("/admComentarios", routerComentario)
 app.use("/admPlanes", routerPlan)
+app.use("/admUsuarios", routerUsuarios )

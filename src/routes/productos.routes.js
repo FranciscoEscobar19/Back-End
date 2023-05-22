@@ -1,6 +1,6 @@
 import { Router } from "express";
 import ProductosCtrl from "../controllers/productos.controllers";
-
+import autenticacionToken from "../middlewares/verificacionToken";
 
 const routerProductos = Router()
 

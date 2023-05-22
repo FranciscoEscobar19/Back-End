@@ -1,6 +1,6 @@
 import { Router } from "express";
 import PacientesCtrl from "../controllers/pacientes.controllers";
-
+import autenticacionToken from "../middlewares/verificacionToken";
 const routerPacientes = Router()
 
 routerPacientes

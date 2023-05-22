@@ -1,42 +1,54 @@
-import UsuarioModels from "../models/usuarios";
+import UsuarioModel from "../models/usuarios";
+import Helpers from "../helpers/helpers";
+import jwt from "jsonwebtoken";
+const UsuariosCtrl = {};
 
-const UsuarioCtrl = {};
-
-UsuarioCtrl.registrarUsuario = async (req, res) => {
+UsuariosCtrl.crearUsuario = async (req, res) => {
   try {
-    const NuevaUsuario = newUsuarioModels({
-      nombreCliente: req.body.nombreCliente,
-      MailCliente: req.body.MailCliente,
-      telefonoCliente: req.body.telefonoCliente,
-      Descripcion: req.body.Descripcion,
+    const nuevoUsuario = new UsuarioModel({
+      nombreUsuario: req.body.nombreUsuario,
+      password: await Helpers.hashing(req.body.password),
+      email: req.body.email,
+      nombre: req.body.nombre,
+      apellido: req.body.apellido,
     });
-
-    await NuevaUsuario.save();
-    res.status(201).json("Producto Registrado");
+    await nuevoUsuario.save();
+    res.status(201).json({ mensaje: "Usuario Creado" });
   } catch (error) {
     console.log(error);
-    res.status(404);
   }
 };
 
-UsuarioCtrl.leerUsuario = async (req, res) => {
+UsuariosCtrl.logearUsuario = async (req, res) => {
   try {
-    const verListaUsuario = await UsuarioModels.find();
-    res.status(200).json(verListaUsuario);
+    const buscarUsers = await UsuarioModel.findOne({
+      nombreUsuario: req.body.nombreUsuario,
+    });
+    const comparacion = await Helpers.desHashing(
+      req.body.password,
+      buscarUsers.password
+    );
+    if (buscarUsers) {
+      if (comparacion) {
+        jwt.sign(
+          { user: req.body },
+          "secretKey",
+          { expiresIn: 60 * 60 },
+          (err, token) => {
+            res.json({
+              token,
+            });
+          }
+        );
+      } else {
+        res.send("contraseña incorrecta, ingrese nuevamente");
+      }
+    } else {
+      res.send("errorrr");
+    }
   } catch (error) {
     console.log(error);
-    res.status(404);
   }
 };
 
-UsuarioCtrl.eliminarUsuario = async (req, res) => {
-  try {
-     await UsuarioModels.findByIdAndDelete(req.params._id);
-    res.status(200).json("Consulta Eliminada");
-  } catch (error) {
-    console.log(error);
-    res.status(404);
-  }
-};
-
-export default UsuarioCtrl;
+export default UsuariosCtrl;

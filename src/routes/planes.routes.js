@@ -1,6 +1,6 @@
 import { Router } from "express";
 import ConsultaCtrl from "../controllers/planes.controlers";
-
+import autenticacionToken from "../middlewares/verificacionToken";
 
 const routerConsulta = Router ()
 
