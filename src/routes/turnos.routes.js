@@ -12,5 +12,6 @@ routerTurnos
 .route("/:_id")
 .delete(TurnosCtrl.eliminarTurnos)
 .put(TurnosCtrl.editarTurnos)
+.get(TurnosCtrl.verTurnos)
 
 export default routerTurnos

@@ -5,9 +5,11 @@ const TurnosCtrl = {};
 TurnosCtrl.crearTurnos = async (req,res)=>{
     try{
         const nuevoTurno = new TurnoModel({
-            detalleCita:req.body.detalleCita,
+            servicio:req.body.servicio,
+            nombreDueño:req.body.nombreDueño,
             veterinarioNombre:req.body.veterinarioNombre,
-            mascota:req.body.mascota,
+            especieMascota:req.body.especieMascota,
+            telefonoContacto:req.body.telefonoContacto,
             fechaYHora:req.body.fechaYHora,
             
         })
@@ -50,6 +52,17 @@ TurnosCtrl.editarTurnos = async(req,res)=>{
         res.status(404)
     }
 }
+
+TurnosCtrl.verTurnos = async(req,res)=>{
+    try {
+        const verTurno = await TurnoModel.findById(req.params._id)
+        res.status(200).json(verTurno)
+    } catch (error) {
+        console.log(error)
+        res.status(404)
+    }
+}
+
 
 
 export default TurnosCtrl

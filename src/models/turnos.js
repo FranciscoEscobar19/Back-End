@@ -1,7 +1,11 @@
 import mongoose, {Schema} from "mongoose";
 
 const TurnoSchema = new Schema({
-    detalleCita:{
+    servicio:{
+        type:String,
+        require:true,
+    },
+    nombreDueño:{
         type:String,
         require:true,
     },
@@ -9,8 +13,12 @@ const TurnoSchema = new Schema({
         type:String,
         require:true,
     },
-    mascota:{
+    especieMascota:{
         type:String,
+        require:true,
+    },
+    telefonoContacto:{
+        type:Number,
         require:true,
     },
     fechaYHora:{

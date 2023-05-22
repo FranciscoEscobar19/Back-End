@@ -8,7 +8,7 @@ import routerTurnos from "./routes/turnos.routes";
 
 const app = express()
 
-app.set("port", process.env.PORT || 4003);
+app.set("port", process.env.PORT || 4004);
 
 app.listen(app.get("port"),()=>{
     console.log("Hola me ejecuto en el puerto "+ app.get("port"))
